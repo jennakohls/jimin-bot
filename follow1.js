@@ -18,13 +18,16 @@
         // Get the screen_name from the returned data
         let screen_name = data.statuses[i].user.screen_name;
         // THE FOLLOWING MAGIC GOES HERE
-        T.post('friendships/create', {screen_name}, function(err, response){
-          if(err){
-            console.log(err);
-          } else {
-            console.log(screen_name, ': **FOLLOWED**');
-          }
-        });
+        if(T.get('friendships/lookup', {screen_name}, function(err, response))
+          != "followed_by"){
+          T.post('friendships/create', {screen_name}, function(err, response){
+            if(err){
+              console.log(err);
+            } else {
+              console.log(screen_name, ': **FOLLOWED**');
+            }
+          });
+        }
       }
     } else {
       console.log(err);
