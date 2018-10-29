@@ -2,7 +2,7 @@
   "name": "twitter-follow-bot",
   "version": "1.0.0",
   "description": "twitter follow bot",
-  "main": "follow.js",
+  "main": "bot.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,14 +18,15 @@
   ],
   "author": "brandon morelli",
   "license": "ISC",
+  "engines": {
+    "node": "10.12.0",
+    "npm": "6.4.1"
+  },
   "bugs": {
     "url": "https://github.com/bmorelli25/Twitter-Follow-Bot/issues"
   },
   "homepage": "https://github.com/bmorelli25/Twitter-Follow-Bot#readme",
   "dependencies": {
     "twit": "^2.2.11"
-  },
-  "engines": {
-    "node": "10.12.0"
-  },
+  }
 }
