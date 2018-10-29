@@ -5,9 +5,13 @@
   // Set up your search parameters
   var params = {
     q: '(bts follow back) OR (bts gain mutual)',
-    count: 10,
+    count: 1,
     result_type: 'recent',
   }
+
+  var isFollowing = {
+    screen_name: ''
+  };
 
   // Initiate your search using the above paramaters
   T.get('search/tweets', params, function(err, data, response) {
@@ -18,16 +22,19 @@
         // Get the screen_name from the returned data
         let screen_name = data.statuses[i].user.screen_name;
         // THE FOLLOWING MAGIC GOES HERE
-        if(T.get('friendships/lookup', {screen_name}, function(err, response))
-          != "followed_by"){
-          T.post('friendships/create', {screen_name}, function(err, response){
-            if(err){
-              console.log(err);
-            } else {
-              console.log(screen_name, ': **FOLLOWED**');
-            }
-          });
-        }
+        //if(!(T.get('friendships/lookup', {screen_name}, function(err, response))
+          //== "following")){
+          //console.log(screen_name, ': would be followed, but ',
+          isFollowing.screen_name = screen_name;
+            console.log(T.get('friendships/lookup', isFollowing));
+          // T.post('friendships/create', {screen_name}, function(err, response){
+          //   if(err){
+          //     console.log(err);
+          //   } else {
+          //     console.log(screen_name, ': **FOLLOWED**');
+          //   }
+          // });
+       // }
       }
     } else {
       console.log(err);

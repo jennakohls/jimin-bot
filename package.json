@@ -13,7 +13,8 @@
   "keywords": [
     "twitter",
     "bot",
-    "node"
+    "node",
+    "heroku"
   ],
   "author": "brandon morelli",
   "license": "ISC",
@@ -23,5 +24,8 @@
   "homepage": "https://github.com/bmorelli25/Twitter-Follow-Bot#readme",
   "dependencies": {
     "twit": "^2.2.11"
-  }
+  },
+  "engines": {
+    "node": "10.12.0"
+  },
 }
