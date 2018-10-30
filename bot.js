@@ -63,22 +63,27 @@ function retweetLatest() {
 }
 
 function filter(twt){
-	if(twt.retweet_count < 10){
-		console.log('tweet was filtered out for having ',twt.retweet_count,' rts');
+	if(typeof twt == 'undefined'){
+		console.log('twt is undefined.');
 		return false;
 	}
-	var content;
-	if(twt.truncated){
-		content = twt.extended_tweet.full_text;
-	} else{
-		content = twt.text;
-	}
-	for(var i = 0; i < filters.length; i++){
-		if(content.includes(filters[i])){
-			console.log('tweet was filtered out for:', filters[i]);
+	else if(twt.retweet_count < 10){
+			console.log('tweet was filtered out for having',twt.retweet_count,'rts');
 			return false;
-		}
 	}
+
+	var content;
+		if(twt.truncated){
+			content = twt.extended_tweet.full_text;
+		} else{
+			content = twt.text;
+		}
+		for(var i = 0; i < filters.length; i++){
+			if(content.includes(filters[i])){
+				console.log('tweet was filtered out for:', filters[i]);
+				return false;
+			}
+		}
 	return true;
 }
 follow.a();
