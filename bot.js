@@ -35,7 +35,7 @@ function retweetLatest() {
 				T.post('statuses/retweet/' + retweetId, { }, function (error, response) {
 					if (response) {
 						console.log('Success! Check your bot, it should have retweeted something.')
-						i = 9;
+						i = num;
 					}
 					// If there was an error with our Twitter call, we print it out here.
 					if (error) {
