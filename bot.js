@@ -1,4 +1,8 @@
-// Our Twitter library
+/*
+* jimin bot
+* build 1.0
+*
+*/
 var Twit = require('twit');
 
 // We need to include our configuration file
@@ -11,7 +15,7 @@ var jimin = {
 	lang: "en OR ko OR und"
 	};
 
-var filters = [" rt", "retweet", "ao3", "giveaway", "give away"];
+var filters = [" rt", "retweet", "ao3", "giveaway", "give away", "yoonmin"];
 
 var follow = require("./follow.js");
 
