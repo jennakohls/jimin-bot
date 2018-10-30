@@ -9,7 +9,8 @@ var jimin = {
 	q: "jimin",
 	count: 10,
 	result_type: "recent"
-	// lang: 'en OR ko OR und'};
+	// lang: 'en OR ko OR und'
+	};
 
 var follow = require("./follow.js");
 
