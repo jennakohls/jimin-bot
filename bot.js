@@ -26,35 +26,37 @@ function retweetLatest() {
 	  // log out any errors and responses
 	  //console.log(error, data);
 	  // If our search request to the server had no errors and the tweet we've pulled has at least one retweet...
-	var i = 0;
-	var success = false;
-	while(!success && i < num){
-		  if (!error) {
-		  	if(filter(data.statuses[i])) {
-		  	// ...then we grab the ID of the tweet we want to retweet...
-				var retweetId = data.statuses[i].id_str;
-				// ...and then we tell Twitter we want to retweet it!
-				T.post('statuses/retweet/' + retweetId, { }, function (error, response) {
-					if (response) {
-						console.log('Success! Check your bot, it should have retweeted something.')
-						success = true;
-					}
-					// If there was an error with our Twitter call, we print it out here.
-					if (error) {
-						console.log('There was an error with Twitter:', error);
-						i++;
-					}
-				})
+	// var i = 0;
+	 var success = false;
+	while(!success){
+		for(var i = 0; i < num; i++){
+			  if (!error) {
+			  	if(filter(data.statuses[i])) {
+			  	// ...then we grab the ID of the tweet we want to retweet...
+					var retweetId = data.statuses[i].id_str;
+					// ...and then we tell Twitter we want to retweet it!
+					T.post('statuses/retweet/' + retweetId, { }, function (error, response) {
+						if (response) {
+							console.log('Success! Check your bot, it should have retweeted something.')
+							success = true;
+						}
+						// If there was an error with our Twitter call, we print it out here.
+						if (error) {
+							console.log('There was an error with Twitter:', error);
+							// i++;
+						}
+					})
+				}
+				// else{
+				// 	i++;
+				// }
+			  }
+			  // However, if our original search request had an error, we want to print it out here.
+			  else {
+			  	console.log('There was an error with your hashtag search:', error);
+			  	// i++;
+			  }
 			}
-			else{
-				i++;
-			}
-		  }
-		  // However, if our original search request had an error, we want to print it out here.
-		  else {
-		  	console.log('There was an error with your hashtag search:', error);
-		  	i++;
-		  }
 		}
 	}
 	);
