@@ -28,8 +28,9 @@ function retweetLatest() {
 	  // If our search request to the server had no errors and the tweet we've pulled has at least one retweet...
 	// var i = 0;
 	 var success = false;
-	while(!success){
+//	while(!success){
 		for(var i = 0; i < num; i++){
+			while(!success){
 			  if (!error) {
 			  	if(filter(data.statuses[i])) {
 			  	// ...then we grab the ID of the tweet we want to retweet...
