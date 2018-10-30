@@ -40,7 +40,7 @@ function retweetLatest() {
 	});
 }
 
-//follow.a();
+follow.a();
 // Try to retweet something as soon as we run the program...
 retweetLatest();
 console.log('\n');
