@@ -6,7 +6,7 @@ var T = new Twit(require('./config.js'));
 
 
 var jimin = {
-	q: "jimin%20-omega%20-alpha%20-beta%20-giveaway%20-yoonmin%20-mutuals%20-rt",
+	q: "jimin",
 	count: 10,
 	result_type: "recent",
 	lang: 'en OR ko OR und'};
@@ -39,7 +39,7 @@ function retweetLatest() {
 	});
 }
 
-follow.a();
+//follow.a();
 // Try to retweet something as soon as we run the program...
 retweetLatest();
 console.log('\n');
