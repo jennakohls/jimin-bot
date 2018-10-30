@@ -8,9 +8,10 @@ var jimin = {
 	q: "jimin",
 	count: 10,
 	result_type: "recent",
-	lang: 'en OR ko OR und'
+	lang: "en OR ko OR und"
 	};
 
+var filters = [" rt", "retweet", "ao3", "giveaway", "give away"];
 var follow = require("./follow.js");
 
 function retweetLatest() {
@@ -18,7 +19,7 @@ function retweetLatest() {
 	  // log out any errors and responses
 	  //console.log(error, data);
 	  // If our search request to the server had no errors and the tweet we've pulled has at least one retweet...
-	  if (!error && (data.statuses[0].retweet_count > 9)) {
+	  if (!error && (data.statuses[0].retweet_count > 9) && (keywords(data.statuses[0]))) {
 	  	// ...then we grab the ID of the tweet we want to retweet...
 		var retweetId = data.statuses[0].id_str;
 		// ...and then we tell Twitter we want to retweet it!
@@ -39,6 +40,20 @@ function retweetLatest() {
 	});
 }
 
+function keywords(twt){
+	var content;
+	if(twt.truncated){
+		content = twt.extended_tweet.full_text;
+	} else{
+		content = twt.text;
+	}
+	for(var i = 0; i < filters.length; i++){
+		if(content.includes(filters[i])){
+			return false;
+		}
+	}
+	return true;
+}
 follow.a();
 // Try to retweet something as soon as we run the program...
 retweetLatest();
