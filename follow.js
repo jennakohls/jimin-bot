@@ -5,7 +5,7 @@ var a = function a() {
 
   // Set up your search parameters
   var params = {
-    q: '(bts follow back) OR (bts gain mutual)',
+    q: '(bts follow back) OR (bts gain mutual) -pakistan',
     count: 10,
     result_type: 'recent',
   }
