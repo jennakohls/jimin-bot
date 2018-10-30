@@ -25,7 +25,7 @@ function retweetLatest() {
 	  //console.log(error, data);
 	  // If our search request to the server had no errors and the tweet we've pulled has at least one retweet...
 	  if (!error) {
-	  	if((data.statuses[0].retweet_count > 9) && (keywords(data.statuses[0]))) {
+	  	if(filter(data.statuses[0])) {
 	  	// ...then we grab the ID of the tweet we want to retweet...
 			var retweetId = data.statuses[0].id_str;
 			// ...and then we tell Twitter we want to retweet it!
@@ -39,6 +39,9 @@ function retweetLatest() {
 				}
 			})
 		}
+		// else{
+		// 	console.log('tweet was filtered out');
+		// }
 	  }
 	  // However, if our original search request had an error, we want to print it out here.
 	  else {
@@ -47,7 +50,11 @@ function retweetLatest() {
 	});
 }
 
-function keywords(twt){
+function filter(twt){
+	if(twt.retweet_count < 10){
+		console.log('tweet was filtered out for having ',twt.retweet_count,' rts');
+		return false;
+	}
 	var content;
 	if(twt.truncated){
 		content = twt.extended_tweet.full_text;
