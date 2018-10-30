@@ -12,6 +12,7 @@ var jimin = {
 	};
 
 var filters = [" rt", "retweet", "ao3", "giveaway", "give away"];
+
 var follow = require("./follow.js");
 
 function retweetLatest() {
@@ -49,6 +50,7 @@ function keywords(twt){
 	}
 	for(var i = 0; i < filters.length; i++){
 		if(content.includes(filters[i])){
+			console.log('tweet was filtered out for: ', filters[i]);
 			return false;
 		}
 	}
