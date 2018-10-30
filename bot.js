@@ -24,19 +24,21 @@ function retweetLatest() {
 	  // log out any errors and responses
 	  //console.log(error, data);
 	  // If our search request to the server had no errors and the tweet we've pulled has at least one retweet...
-	  if (!error && (data.statuses[0].retweet_count > 9) && (keywords(data.statuses[0]))) {
+	  if (!error) {
+	  	if((data.statuses[0].retweet_count > 9) && (keywords(data.statuses[0]))) {
 	  	// ...then we grab the ID of the tweet we want to retweet...
-		var retweetId = data.statuses[0].id_str;
-		// ...and then we tell Twitter we want to retweet it!
-		T.post('statuses/retweet/' + retweetId, { }, function (error, response) {
-			if (response) {
-				console.log('Success! Check your bot, it should have retweeted something.')
-			}
-			// If there was an error with our Twitter call, we print it out here.
-			if (error) {
-				console.log('There was an error with Twitter:', error);
-			}
-		})
+			var retweetId = data.statuses[0].id_str;
+			// ...and then we tell Twitter we want to retweet it!
+			T.post('statuses/retweet/' + retweetId, { }, function (error, response) {
+				if (response) {
+					console.log('Success! Check your bot, it should have retweeted something.')
+				}
+				// If there was an error with our Twitter call, we print it out here.
+				if (error) {
+					console.log('There was an error with Twitter:', error);
+				}
+			})
+		}
 	  }
 	  // However, if our original search request had an error, we want to print it out here.
 	  else {
