@@ -6,10 +6,10 @@ var T = new Twit(require('./config.js'));
 
 
 var jimin = {
-	q: "jimin%20-rt",
+	q: "jimin",
 	count: 10,
 	result_type: "recent"
-	// lang: 'en OR ko OR und'
+	lang: 'en OR ko OR und'
 	};
 
 var follow = require("./follow.js");
