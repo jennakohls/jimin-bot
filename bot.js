@@ -35,7 +35,7 @@ function retweetLatest() {
 				T.post('statuses/retweet/' + retweetId, { }, function (error, response) {
 					if (response) {
 						console.log('Success! Check your bot, it should have retweeted something.')
-						break;
+						return;
 					}
 					// If there was an error with our Twitter call, we print it out here.
 					if (error) {
@@ -69,7 +69,7 @@ function filter(twt){
 	}
 	for(var i = 0; i < filters.length; i++){
 		if(content.includes(filters[i])){
-			console.log('tweet was filtered out for: ', filters[i]);
+			console.log('tweet was filtered out for:', filters[i]);
 			return false;
 		}
 	}
