@@ -8,6 +8,7 @@ var a = function a() {
     q: '(bts follow back) OR (bts gain mutual) -pakistan',
     count: 10,
     result_type: 'recent',
+    lang: 'en OR ko OR es -ar'
   }
 
   // Initiate your search using the above paramaters
