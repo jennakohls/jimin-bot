@@ -8,7 +8,7 @@ var T = new Twit(require('./config.js'));
 var jimin = {
 	q: "jimin",
 	count: 10,
-	result_type: "recent"
+	result_type: "recent",
 	lang: 'en OR ko OR und'
 	};
 
