@@ -8,9 +8,11 @@ var Twit = require('twit');
 // We need to include our configuration file
 var T = new Twit(require('./config.js'));
 
+var num = 10;
+
 var jimin = {
 	q: "jimin",
-	count: 10,
+	count: num,
 	result_type: "recent",
 	lang: "en OR ko OR und"
 	};
@@ -24,30 +26,34 @@ function retweetLatest() {
 	  // log out any errors and responses
 	  //console.log(error, data);
 	  // If our search request to the server had no errors and the tweet we've pulled has at least one retweet...
-	  if (!error) {
-	  	if(filter(data.statuses[0])) {
-	  	// ...then we grab the ID of the tweet we want to retweet...
-			var retweetId = data.statuses[0].id_str;
-			// ...and then we tell Twitter we want to retweet it!
-			T.post('statuses/retweet/' + retweetId, { }, function (error, response) {
-				if (response) {
-					console.log('Success! Check your bot, it should have retweeted something.')
-				}
-				// If there was an error with our Twitter call, we print it out here.
-				if (error) {
-					console.log('There was an error with Twitter:', error);
-				}
-			})
+	for(var i = 0; i < num; i++){
+		  if (!error) {
+		  	if(filter(data.statuses[i])) {
+		  	// ...then we grab the ID of the tweet we want to retweet...
+				var retweetId = data.statuses[0].id_str;
+				// ...and then we tell Twitter we want to retweet it!
+				T.post('statuses/retweet/' + retweetId, { }, function (error, response) {
+					if (response) {
+						console.log('Success! Check your bot, it should have retweeted something.')
+						break;
+					}
+					// If there was an error with our Twitter call, we print it out here.
+					if (error) {
+						console.log('There was an error with Twitter:', error);
+					}
+				})
+			}
+			// else{
+			// 	console.log('tweet was filtered out');
+			// }
+		  }
+		  // However, if our original search request had an error, we want to print it out here.
+		  else {
+		  	console.log('There was an error with your hashtag search:', error);
+		  }
 		}
-		// else{
-		// 	console.log('tweet was filtered out');
-		// }
-	  }
-	  // However, if our original search request had an error, we want to print it out here.
-	  else {
-	  	console.log('There was an error with your hashtag search:', error);
-	  }
-	});
+	}
+	);
 }
 
 function filter(twt){
