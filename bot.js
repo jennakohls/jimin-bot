@@ -6,7 +6,7 @@ var T = new Twit(require('./config.js'));
 
 
 var jimin = {
-	q: "jimin -omega -alpha -beta -giveaway -yoonmin -mutuals -rt",
+	q: "jimin%20-omega%20-alpha%20-beta%20-giveaway%20-yoonmin%20-mutuals%20-rt",
 	count: 10,
 	result_type: "recent",
 	lang: 'en OR ko OR und'};
