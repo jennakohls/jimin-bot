@@ -1,6 +1,7 @@
 /*
 * jimin bot
-* build 1.0
+* build 47 lol
+* shadow ban version :(
 *
 */
 var Twit = require('twit');
@@ -8,7 +9,7 @@ var Twit = require('twit');
 // We need to include our configuration file
 var T = new Twit(require('./config.js'));
 
-var num = 10;
+var num = 1;
 
 var jimin = {
 	q: "jimin",
@@ -93,5 +94,5 @@ retweetLatest();
 console.log('\n');
 // ...and then every hour after that. Time here is in milliseconds, so
 // 1000 ms = 1 second, 1 sec * 60 = 1 min, 1 min * 60 = 1 hour --> 1000 * 60 * 60
-setInterval(retweetLatest, 1000 * 60);
-setInterval(follow.a, 1000 * 60 * 20);
+setInterval(retweetLatest, 1000 * 60 * 20);
+setInterval(follow.a, 1000 * 60 * 60);
