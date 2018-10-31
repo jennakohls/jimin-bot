@@ -79,7 +79,7 @@ function filter(twt){
 		} else{
 			content = twt.text;
 		}
-		for(var i = 0; i < filters.length; i++){
+		for(let i = 0; i < filters.length; i++){
 			if(content.includes(filters[i])){
 				console.log('tweet was filtered out for:', filters[i]);
 				return false;
