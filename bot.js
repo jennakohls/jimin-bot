@@ -20,6 +20,7 @@ translate('I love you', {from: 'en', to: 'ko'}).then(res => {
 });
 
 
+
 // We need to include our configuration file
 var T = new Twit(require('./config.js'));
 
@@ -35,6 +36,19 @@ var jimin = {
 var filters = [" rt", "retweet", "ao3", "giveaway", "give away", "yoonmin"];
 
 var follow = require("./follow.js");
+
+var translated = {
+    status: twtTxt,
+}
+
+T.post('statuses/update',translated, function(error, response){
+    if(response){
+        console.log('hooray you tweeted:',twtTxt);
+    }
+    if(error) {
+        console.log('twitter says:',error);
+    }
+});
 
 function retweetLatest() {
 	T.get('search/tweets', jimin, function (error, data) {
