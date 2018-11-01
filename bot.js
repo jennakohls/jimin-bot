@@ -38,7 +38,7 @@ var filters = [" rt", "retweet", "ao3", "giveaway", "give away", "yoonmin"];
 var follow = require("./follow.js");
 
 var translated = {
-    status: twtTxt,
+    status: twtTxt
 }
 
 T.post('statuses/update',translated, function(error, response){
