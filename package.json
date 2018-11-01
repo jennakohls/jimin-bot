@@ -27,6 +27,17 @@
   },
   "homepage": "https://github.com/bmorelli25/Twitter-Follow-Bot#readme",
   "dependencies": {
+    "google-translate-api": "github:vitalets/google-translate-api",
     "twit": "^2.2.11"
+  },
+  "devDependencies": {
+    "ava": "^0.15.2",
+    "codecov": "^1.0.1",
+    "coveralls": "^2.11.11",
+    "nyc": "^7.0.0",
+    "xo": "^0.16.0"
+  },
+  "xo": {
+    "space": 4
   }
 }
