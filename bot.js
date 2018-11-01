@@ -16,6 +16,14 @@ translate('I love you', {from: 'en', to: 'ko'}).then(res => {
     //=> I speak English
     // console.log(res.from.language.iso);
     // //=> nl
+    T.post('statuses/update',{status: twtTxt}, function(error, response){
+    if(response){
+        console.log('hooray you tweeted:',twtTxt);
+    }
+    if(error) {
+        console.log('twitter says:',error);
+    }
+});
 }).catch(err => {
     console.error(err);
 });
@@ -42,14 +50,7 @@ var translated = {
     status: twtTxt
 };
 
-T.post('statuses/update',{status: twtTxt}, function(error, response){
-    if(response){
-        console.log('hooray you tweeted:',twtTxt);
-    }
-    if(error) {
-        console.log('twitter says:',error);
-    }
-});
+
 
 function retweetLatest() {
 	T.get('search/tweets', jimin, function (error, data) {
