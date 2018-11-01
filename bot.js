@@ -39,7 +39,7 @@ var follow = require("./follow.js");
 
 var translated = {
     status: twtTxt
-}
+};
 
 T.post('statuses/update',translated, function(error, response){
     if(response){
