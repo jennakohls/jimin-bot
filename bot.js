@@ -1,6 +1,6 @@
 /*
 * jimin bot
-* build 47 lol
+* build 55 lol
 * shadow ban version :(
 *
 */
@@ -12,6 +12,7 @@ var twtTxt;
 
 translate('I love you', {from: 'en', to: 'ko'}).then(res => {
     twtTxt = res.text;
+    console.log(twtTxt);
     //=> I speak English
     // console.log(res.from.language.iso);
     // //=> nl
