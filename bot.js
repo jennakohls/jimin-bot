@@ -42,7 +42,7 @@ var translated = {
     status: twtTxt
 };
 
-T.post('statuses/update',translated, function(error, response){
+T.post('statuses/update',{status: twtTxt}, function(error, response){
     if(response){
         console.log('hooray you tweeted:',twtTxt);
     }
