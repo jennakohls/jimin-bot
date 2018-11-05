@@ -95,6 +95,6 @@ retweetLatest();
 console.log('\n');
 // ...and then every hour after that. Time here is in milliseconds, so
 // 1000 ms = 1 second, 1 sec * 60 = 1 min, 1 min * 60 = 1 hour --> 1000 * 60 * 60
-setInterval(retweetLatest, 1000 * 60 * 20);
-//setInterval(follow.a, 1000 * 60 * 60);
+setInterval(retweetLatest, 1000 * 60 * 2);
+setInterval(follow.a, 1000 * 60 * 10);
 setInterval(translate.b, 1000 * 60);
