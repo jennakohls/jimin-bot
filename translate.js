@@ -7,7 +7,7 @@ var b = function b() {
 
     var twtTxt;
 
-    var T = new Twit(require('./config1.js'));
+    var T = new Twit(require('./config.js'));
 
     var ttFilters = [" rt", "retweet", "ao3", "giveaway", "give away", "yoonmin", "au"];
 
