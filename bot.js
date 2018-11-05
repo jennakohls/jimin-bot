@@ -1,6 +1,6 @@
 /*
 * jimin bot
-* build 59
+* build 60
 *
 */
 var Twit = require('twit');

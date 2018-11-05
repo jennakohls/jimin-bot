@@ -30,18 +30,18 @@ var b = function b() {
 
     T.get('search/tweets', photoSearch, function(error, data) {
         let tweet = data.statuses[0];
-        console.log('http://www.twitter.com/username/statuses/' + tweet.id_str);
+        //console.log('http://www.twitter.com/username/statuses/' + tweet.id_str);
         if(filterTT(tweet)){
             //console.log(error,data);
-            console.log(tweet);
+            //console.log(tweet);
             if (("retweeted_status" in tweet)) { //tweet is an rt
                 if(tweet.retweeted_status.truncated){
-                    console.log('rt is truncated');
+                    //console.log('rt is truncated');
                     if("extended_tweet" in tweet.retweeted_status){
                         tweet = data.statuses[0].retweeted_status.extended_tweet;
                         textToTranslate = tweet.full_text;
                     } else console.log('rt ET field not found :(');
-                    console.log(tweet);
+                    //console.log(tweet);
                 } else{
                     tweet = data.statuses[0].retweeted_status;
                     textToTranslate = tweet.text;
@@ -64,7 +64,7 @@ var b = function b() {
                 if(tweet.truncated){
                     tweet = data.statuses[0].extended_tweet;
                     textToTranslate = tweet.full_text;
-                    console.log('found extended tweet');
+                    //console.log('found extended tweet');
                 } else{
                     textToTranslate = tweet.text;
                 }
@@ -84,13 +84,13 @@ var b = function b() {
             }
             if(success){
                 photos = photos.substring(0, photos.length - 1);
-                console.log(Object.keys(tweet.extended_entities.media).length);
-                console.log(photos);
+                //console.log(Object.keys(tweet.extended_entities.media).length);
+                //console.log(photos);
 
                 //translate the tweet
                 translate(textToTranslate, {from: 'en', to: 'ko'}).then(res => {
                     twtTxt = res.text;
-                    console.log(twtTxt);
+                    //console.log(twtTxt);
                     // console.log(res.from.language.iso);
                     // only do this if we succesfully translated! asynchronous calls are wild
                     var translatedTwt = {
