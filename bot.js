@@ -1,37 +1,13 @@
 /*
 * jimin bot
-* build 55 lol
-* shadow ban version :(
+* build 57
 *
 */
 var Twit = require('twit');
 
-const translate = require('google-translate-api');
-
-var twtTxt;
-
-translate('I love you', {from: 'en', to: 'ko'}).then(res => {
-    twtTxt = res.text;
-    console.log(twtTxt);
-    //=> I speak English
-    // console.log(res.from.language.iso);
-    // //=> nl
-    T.post('statuses/update',{status: twtTxt}, function(error, response){
-    if(response){
-        console.log('hooray you tweeted:',twtTxt);
-    }
-    if(error) {
-        console.log('twitter says:',error);
-    }
-});
-}).catch(err => {
-    console.error(err);
-});
-
-
-
-// We need to include our configuration file
 var T = new Twit(require('./config.js'));
+
+var translate = require("./translate.js");
 
 var num = 1;
 
@@ -45,12 +21,6 @@ var jimin = {
 var filters = [" rt", "retweet", "ao3", "giveaway", "give away", "yoonmin"];
 
 var follow = require("./follow.js");
-
-var translated = {
-    status: twtTxt
-};
-
-
 
 function retweetLatest() {
 	T.get('search/tweets', jimin, function (error, data) {
@@ -118,7 +88,8 @@ function filter(twt){
 		}
 	return true;
 }
-//follow.a();
+follow.a();
+translate.b();
 // Try to retweet something as soon as we run the program...
 retweetLatest();
 console.log('\n');
@@ -126,3 +97,4 @@ console.log('\n');
 // 1000 ms = 1 second, 1 sec * 60 = 1 min, 1 min * 60 = 1 hour --> 1000 * 60 * 60
 setInterval(retweetLatest, 1000 * 60 * 20);
 //setInterval(follow.a, 1000 * 60 * 60);
+setInterval(translate.b, 1000 * 60);
