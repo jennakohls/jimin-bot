@@ -94,7 +94,7 @@ var b = function b() {
                     // console.log(res.from.language.iso);
                     // only do this if we succesfully translated! asynchronous calls are wild
                     var translatedTwt = {
-                        status: twtTxt + ' @bts_twt',
+                        status: twtTxt + ' @bts_twt #MAMAvote #BTS',
                     };
                     T.post('statuses/update',translatedTwt, function(error, response){
                     if(response){
