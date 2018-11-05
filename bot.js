@@ -1,6 +1,6 @@
 /*
 * jimin bot
-* build 60
+* build 67
 *
 */
 var Twit = require('twit');
@@ -24,10 +24,6 @@ var follow = require("./follow.js");
 
 function retweetLatest() {
 	T.get('search/tweets', jimin, function (error, data) {
-	  // log out any errors and responses
-	  //console.log(error, data);
-	  // If our search request to the server had no errors and the tweet we've pulled has at least one retweet...
-	// var i = 0;
 	 let success = false;
 //	while(!success){
 		for(let i = 0; i < num; i++){
@@ -45,22 +41,16 @@ function retweetLatest() {
 						// If there was an error with our Twitter call, we print it out here.
 						if (error) {
 							console.log('There was an error with Twitter:', error);
-							// i++;
 						}
 					})
 				}
-				// else{
-				// 	i++;
-				// }
 			  }
 			  // However, if our original search request had an error, we want to print it out here.
 			  else {
 			  	console.log('There was an error with your hashtag search:', error);
-			  	// i++;
 			  }
 			}
 		}
-	//}
 	);
 }
 
